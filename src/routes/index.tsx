@@ -1,6 +1,8 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom';
 import { ProtectedRoute } from '@/components/layout';
 import { LoginPage, RegisterPage, DashboardPage, FriendsPage, LeaderboardPage, ProfilePage } from '@/pages';
+import UserProfilePage from '@/pages/app/UserProfilePage';
+import MessagesPage from '@/pages/app/MessagesPage';
 
 export const router = createBrowserRouter([
   {
@@ -44,10 +46,34 @@ export const router = createBrowserRouter([
     ),
   },
   {
+    path: '/app/messages',
+    element: (
+      <ProtectedRoute>
+        <MessagesPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/app/messages/:conversationId',
+    element: (
+      <ProtectedRoute>
+        <MessagesPage />
+      </ProtectedRoute>
+    ),
+  },
+  {
     path: '/app/profile',
     element: (
       <ProtectedRoute>
         <ProfilePage />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: '/u/:username',
+    element: (
+      <ProtectedRoute>
+        <UserProfilePage />
       </ProtectedRoute>
     ),
   },

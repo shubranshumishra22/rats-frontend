@@ -11,6 +11,7 @@ import {
   Moon,
   Sun,
   ChevronDown,
+  MessageCircle,
 } from 'lucide-react';
 import { useAuth, useTheme } from '@/context';
 import { Button } from '@/components/ui/button';
@@ -29,6 +30,7 @@ import { cn } from '@/lib/utils';
 const navigation = [
   { name: 'Dashboard', href: '/app/dashboard', icon: LayoutDashboard },
   { name: 'Friends', href: '/app/friends', icon: Users },
+  { name: 'Messages', href: '/app/messages', icon: MessageCircle },
   { name: 'Leaderboard', href: '/app/leaderboard', icon: Trophy },
   { name: 'Profile', href: '/app/profile', icon: User },
 ];

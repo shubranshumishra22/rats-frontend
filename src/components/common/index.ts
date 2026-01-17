@@ -8,3 +8,5 @@ export { FriendCard, FriendRequestCard } from './FriendCard';
 export { FriendList, FriendRequestList } from './FriendList';
 export { LeaderboardTable } from './LeaderboardTable';
 export { ConfirmDialog } from './ConfirmDialog';
+export { UserLink } from './UserLink';
+export { FriendActionButton } from './FriendActionButton';

@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
 import { EmptyState } from './EmptyState';
+import { UserLink } from './UserLink';
 import { cn } from '@/lib/utils';
 import type { LeaderboardEntry } from '@/types';
 
@@ -88,7 +89,10 @@ export function LeaderboardTable({ entries, isLoading, currentUserId }: Leaderbo
                   </Avatar>
                   <div>
                     <div className="flex items-center gap-2">
-                      <p className="font-medium text-[0.9375rem] text-foreground">{entry.username}</p>
+                      <UserLink 
+                        username={entry.username} 
+                        className="font-medium text-[0.9375rem]"
+                      />
                       {isCurrentUser && (
                         <span className="text-[10px] bg-primary text-primary-foreground px-1.5 py-0.5 rounded-full font-semibold uppercase tracking-wide">
                           You

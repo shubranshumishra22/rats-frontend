@@ -1,5 +1,5 @@
 import api from './axios';
-import type { ApiResponse, Friend, FriendRequest } from '@/types';
+import type { ApiResponse, Friend, FriendRequest, FriendshipStatus } from '@/types';
 
 export const friendsApi = {
   getFriends: async (): Promise<Friend[]> => {
@@ -19,6 +19,11 @@ export const friendsApi = {
       createdAt: req.createdAt,
       sender: req.from,
     }));
+  },
+
+  getFriendshipStatus: async (userId: string): Promise<FriendshipStatus> => {
+    const response = await api.get<ApiResponse<FriendshipStatus>>(`/friends/status/${userId}`);
+    return response.data.data;
   },
 
   sendRequest: async (userId: string): Promise<void> => {

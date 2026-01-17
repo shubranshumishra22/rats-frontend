@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Badge } from '@/components/ui/badge';
+import { UserLink } from './UserLink';
 import type { Friend, FriendRequest } from '@/types';
 import { useRespondToRequest, useRemoveFriend } from '@/hooks/useFriends';
 
@@ -30,7 +31,10 @@ export function FriendCard({ friend }: FriendCardProps) {
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0">
-              <p className="font-medium text-[0.9375rem] text-foreground truncate">{friend.username}</p>
+              <UserLink 
+                username={friend.username} 
+                className="font-medium text-[0.9375rem]"
+              />
               <p className="text-[13px] text-muted-foreground truncate">{friend.email}</p>
             </div>
           </div>
@@ -87,7 +91,10 @@ export function FriendRequestCard({ request }: FriendRequestCardProps) {
               </AvatarFallback>
             </Avatar>
             <div className="min-w-0">
-              <p className="font-medium text-[0.9375rem] text-foreground truncate">{request.sender.username}</p>
+              <UserLink 
+                username={request.sender.username} 
+                className="font-medium text-[0.9375rem]"
+              />
               <p className="text-[13px] text-muted-foreground truncate">wants to be friends</p>
             </div>
           </div>

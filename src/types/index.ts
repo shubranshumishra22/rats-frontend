@@ -3,12 +3,32 @@ export interface User {
   id: string;
   email: string;
   username: string;
+  displayName?: string;
+  bio?: string;
+  avatarUrl?: string;
   points: number;
   currentStreak: number;
   longestStreak: number;
   lastActiveAt: string | null;
   createdAt: string;
   updatedAt: string;
+}
+
+// Public Profile (no email)
+export interface PublicProfile {
+  id: string;
+  username: string;
+  displayName: string;
+  bio: string | null;
+  avatarUrl: string | null;
+  stats: {
+    points: number;
+    currentStreak: number;
+    longestStreak: number;
+    goalsCompleted: number;
+    totalGoals: number;
+  };
+  createdAt: string;
 }
 
 // Auth types
@@ -136,4 +156,61 @@ export interface PaginatedResponse<T> {
   page: number;
   limit: number;
   totalPages: number;
+}
+
+// Friendship Status
+export type FriendshipStatusType = 'none' | 'friends' | 'request_sent' | 'request_received' | 'self' | 'blocked';
+
+export interface FriendshipStatus {
+  status: FriendshipStatusType;
+  friendshipId?: string;
+  requestId?: string;
+}
+
+// Messaging types
+export interface Conversation {
+  id: string;
+  otherUser: {
+    id: string;
+    username: string;
+    displayName: string | null;
+    avatarUrl: string | null;
+  };
+  lastMessage: {
+    id: string;
+    content: string;
+    senderId: string;
+    createdAt: string;
+  } | null;
+  lastReadAt: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+export interface Message {
+  id: string;
+  content: string;
+  createdAt: string;
+  updatedAt: string;
+  conversationId: string;
+  senderId: string;
+  sender: {
+    id: string;
+    username: string;
+    displayName: string | null;
+    avatarUrl: string | null;
+  };
+}
+
+export interface TypingIndicator {
+  conversationId: string;
+  userId: string;
+  username: string;
+  isTyping: boolean;
+}
+
+// API Error
+export interface ApiError {
+  code: string;
+  message: string;
 }
