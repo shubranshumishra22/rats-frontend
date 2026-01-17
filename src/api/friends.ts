@@ -8,8 +8,17 @@ export const friendsApi = {
   },
 
   getPendingRequests: async (): Promise<FriendRequest[]> => {
-    const response = await api.get<ApiResponse<{ requests: FriendRequest[] }>>('/friends/requests');
-    return response.data.data.requests || [];
+    const response = await api.get<ApiResponse<{ requests: Array<{
+      id: string;
+      from: { id: string; username: string; email: string };
+      createdAt: string;
+    }> }>>('/friends/requests');
+    // Map 'from' to 'sender' for frontend compatibility
+    return (response.data.data.requests || []).map(req => ({
+      id: req.id,
+      createdAt: req.createdAt,
+      sender: req.from,
+    }));
   },
 
   sendRequest: async (userId: string): Promise<void> => {

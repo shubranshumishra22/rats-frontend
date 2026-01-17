@@ -89,7 +89,7 @@ export interface Friend {
 
 export interface FriendRequest {
   id: string;
-  status: FriendStatus;
+  status?: FriendStatus;
   createdAt: string;
   sender: {
     id: string;
